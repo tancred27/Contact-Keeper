@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator/check');
-
 const User = require('../models/User');
 const Contact = require('../models/Contact');
 
@@ -99,7 +98,7 @@ router.delete('/:id', auth, async(req, res) => {
  
         // Make sure user owns contact:
         if(contact.user.toString() !== req.user.id){
-            return res.status(401).json({ msg: 'Not authorized!'});
+            return res.status(401).json({ msg: 'Not authorized!' });
         }
         await Contact.findByIdAndRemove(req.params.id);
         res.json({ msg: 'Contact Removed!'});
