@@ -30,7 +30,7 @@ router.post('/', [ auth, [
     async(req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
-            return res.status(400).json({ errors: errors.array()});
+            return res.status(400).json({ errors: errors.array() });
         }
         const { name, email, phone, type } = req.body;
 
@@ -43,7 +43,7 @@ router.post('/', [ auth, [
                 user: req.user.id
             });
 
-            const contact = newContact.save();
+            const contact = await newContact.save();
             res.json(contact);
 
         } catch (error) {

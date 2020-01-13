@@ -17,7 +17,7 @@ import {
 
 const ContactState = (props) => {
     const initialState = {
-        contacts : null, 
+        contacts : [], 
         current: null,
         filtered: null,
         error: null
@@ -45,7 +45,6 @@ const ContactState = (props) => {
                 'Content-Type' : 'application/json'
             }
         }
-
         try {
             const res = await axios.post('/api/contacts', contact, config);
             dispatch({ type: ADD_CONTACT, payload: res.data });
