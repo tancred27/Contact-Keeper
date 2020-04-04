@@ -7,6 +7,7 @@ const Login = (props) => {
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
 
+
     const { setAlert } = alertContext;
     const { login, error, clearErrors, isAuthenticated } = authContext;
 
@@ -22,7 +23,7 @@ const Login = (props) => {
         // eslint-disable-next-line
     }, [error, isAuthenticated, props.history]);
 
-    const [ user, setUser] = useState({
+    const [user, setUser] = useState({
         email: '',
         password: ''
     });

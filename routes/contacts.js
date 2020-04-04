@@ -69,7 +69,7 @@ router.put('/:id', auth, async (req, res) => {
     try {
         let contact = await Contact.findById(req.params.id);
 
-        if(!contact) return res.status(404),json({ msg: 'Contact not found' });
+        if(!contact) return res.status(404).json({ msg: 'Contact not found' });
  
         // Make sure user owns contact:
         if(contact.user.toString() !== req.user.id){
@@ -84,7 +84,6 @@ router.put('/:id', auth, async (req, res) => {
         console.log(error.message);
         res.status(500).send('Server Error!');
     }
-
 });
 
 // @router   DELETE api/contacts/:id
@@ -94,7 +93,7 @@ router.delete('/:id', auth, async(req, res) => {
     try {
         let contact = await Contact.findById(req.params.id);
 
-        if(!contact) return res.status(404),json({ msg: 'Contact not found' });
+        if(!contact) return res.status(404).json({ msg: 'Contact not found' });
  
         // Make sure user owns contact:
         if(contact.user.toString() !== req.user.id){
